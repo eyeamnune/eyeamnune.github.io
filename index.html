@@ -76,17 +76,9 @@
 
             map.attributionControl.setPrefix('<a href="https://web.facebook.com/wowienottie.9">pnunekpeku5@gmail.com</a>'); 
 
-<!--            L.marker([5.2904480, -1.2030910]).addTo(map) 		-->
-<!--                	.bindPopup('Boohene Farm')   			-->
-<!--		        .openPopup();					-->
-
-<!--	    var popup = L.popup()					-->
-<!--		.setLatLng([5.2904480, -1.2030910])			-->
-<!--		.setContent("Boo Farm")					-->
-<!--		.openOn(map);						-->
                                     
             // files/kml/wrf_rainfall_201908070600.kml                          
-            var kmlLayer = new L.KML("/forecast/rainfall/2022092000/wrf_rainfall.kml", {async: true});
+            var kmlLayer = new L.KML("/forecast/rainfall/2022092100/wrf_rainfall.kml", {async: true});
             
             var mapKmlLayer = map.addLayer(kmlLayer);
 
