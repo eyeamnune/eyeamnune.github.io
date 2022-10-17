@@ -1,14 +1,11 @@
 <!-- This is written by Peter Nunekpeku | pnunekpeku5@gmail.com | eastwindconsultintl@gmail.com -->        
-<!--  modified 2022-09-21 UTC  -->
+<!--  modified 2022-06-30 UTC  -->
 
 <html>
 <head>
    <title>The Weather Station Rainfall Forecast</title>
 
    <meta charset="utf-8" />
-   <meta http-equiv='cache-control' content='no-cache'> 
-   <meta http-equiv='expires' content='0'> 
-   <meta http-equiv='pragma' content='no-cache'>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <link rel="stylesheet" href="leaflet.css" />
@@ -65,23 +62,23 @@
 
         var map = L.map('map').setView([9.05, -1.1], 6);
         map.options.minZoom = 6;    
-	map.options.maxZoom = 12; // Reduce this for free editions                 
+	map.options.maxZoom = 20; // Reduce this for free editions                 
         const bounds = [
-			[1.082608,-16.84559],
-			[14.50000,15.04559] 
+			[1.082608,-16.84559], // SouthWest Coordinates  2.282608,-17.84559
+			[15.0386,15.04559] // NorthEast Coordinates  17.5386,15.44559
 		       ];
 
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
                 attribution: '<a href="https://web.facebook.com/eastwindconsult">EastwindConsult</a> | \
                 &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> | \
                 <a href="https://leafletjs.com">Leaflet</a>'
-            }).addTo(map);
+            }).addTo(map);	
+             
 
-            map.attributionControl.setPrefix('<a href="https://web.facebook.com/wowienottie.9">pnunekpeku5@gmail.com</a>'); 
-
+            map.attributionControl.setPrefix('<a href="https://web.facebook.com/wowienottie.9">eastwindconsultintl@gmail.com</a>'); 
                                     
             // files/kml/wrf_rainfall_201908070600.kml                          
-            var kmlLayer = new L.KML("/forecast/rainfall/2022101400/wrf_rainfall.kml", {async: true});
+            var kmlLayer = new L.KML("/forecast/precslpwind/2022101700/wrf_precslpwind.kml", {async: true});
             
             var mapKmlLayer = map.addLayer(kmlLayer);
 
