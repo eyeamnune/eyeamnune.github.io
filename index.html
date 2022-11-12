@@ -2,90 +2,102 @@
 <!--  modified 2022-06-30 UTC  -->
 
 <html>
-<head>
-   <title>The Weather Station Rainfall Forecast</title>
+    <head>
+      <title>EastwindConsult Weather</title>
 
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <link rel="stylesheet" href="leaflet.css" />
-   <link rel="stylesheet" href="mykmlstyles.css" />
-   <!--[if lte IE 8]><link rel="stylesheet" href="leaflet/leaflet.ie.css" /><![endif]-->
-   
-   <script src="leaflet.js"></script>
-   
-   <!-- Bring in the leaflet KML plugin -->
-   <script src="KML.js"></script> 
+      <link rel="stylesheet" href="leaflet.css" />
+      <link rel="stylesheet" href="mykmlstyles.css" />
+      
+      <!--[if lte IE 8]><link rel="stylesheet" href="leaflet/leaflet.ie.css" /><![endif]-->
+      
+      <script src="leaflet.js"></script>
+      
+      <!-- Bring in the leaflet KML plugin -->
+      <script src="KML.js"></script> 
 
-</head>
-<body>
+    </head>
+    <body>
 
-    <div id="map">      
-        <div class="button container"> 
-<!-- Todo: uncomment the line below to show date and time at the header of page -->        
-<!--        <li class="fslide"></li><li class="fslide"></li>  -->        
-            <div class="buttons">
-                <div>
-                    <ul id="fslides">
-                    <li class="fslide"></li><li class="fslide"></li><li class="fslide">UTC</li>
-                    <br>
-                    </ul>
-                    <br>
-                </div> 
-                        <button class="controls" id="previous">&lt;</button>
-                        <button class="controls" id="pause">&#10074;&#10074;</button>
-                        <button class="controls" id="next">&gt;</button>
-            </div>
-        </div>
+        <div id="map">      
+            <div class="button container"> 
+            <!-- Todo: uncomment the line below to show date and time at the header of page -->        
+            <!--        <li class="fslide"></li><li class="fslide"></li>  -->        
+              <div class="buttons">
+                  <div>
+                      <ul id="fslides">
+                      <li class="fslide"></li><li class="fslide"></li><li class="fslide">UTC</li>
+                      <br>
+                      </ul>
+                      <br>
+                  </div> 
+                          <button class="controls" id="previous">&lt;</button>
+                          <button class="controls" id="pause">&#10074;&#10074;</button>
+                          <button class="controls" id="next">&gt;</button>
+                  </div>
+                  <div>
+                    <button id="capture">Record Forecast</button>
+                  </div>
+                 
+                  <video class="video"></video>    
+              </div>
 
-          <div class="logo">
-                  <img src="images/eastwindconsult.png" alt="eastwindconsultlogo" width="75" height="75"/>
-          </div>
+              <div class="logo">
+                      <img src="images/eastwindconsult.png" alt="eastwindconsultlogo" width="75" height="75"/>
+              </div>
 
           <div class='legendContainer'>
-          <div class='legendTitle'></div>
-          <div class='legendScale'>
-            <ul class='legendLabel'>
-              <li><span style='background:#F2EEF6;'></span><br/><b>Clear Sky<br/>Partly Cloudy</b></li>
-              <li><span style='background:#40E0D0;'></span><br/><b>Partly Cloudy<br/>Cloudy</b></li>
-              <li><span style='background:#00BFFFFF;'></span><br/><b>Light Drizzle<br/>Drizzle</b></li>
-              <li><span style='background:#00FF7FFF;'></span><br/><b>Light Rain<br/>Rain Showers</b></li>
-              <li><span style='background:#FFD700;'></span><br/><b>Rain</b></li>
-              <li><span style='background:#FF6347;'></span><br/><b>Heavy Rain</b></li>
-              <li><span style='background:#B22222;'></span><br/><b>Heavy Rain<br/>Thunderstorm</b></li>
-            </ul>
+            <div class='legendTitle'></div>
+              <div class='legendScale'>
+                <ul class='legendLabel'>
+                  <li><span style='background:#F2EEF6;'></span><br/><b>Clear Sky<br/>Partly Cloudy</b></li>
+                  <li><span style='background:#40E0D0;'></span><br/><b>Partly Cloudy<br/>Cloudy</b></li>
+                  <li><span style='background:#00bfff;'></span><br/><b>Light Drizzle<br/>Drizzle</b></li>
+                  <li><span style='background:#68fa07'></span><br/><b>Light Rain<br/>Rain Showers</b></li>
+                  <li><span style='background:#FFD700;'></span><br/><b>Rain</b></li>
+                  <li><span style='background:#FF6347;'></span><br/><b>Heavy Rain</b></li>
+                  <li><span style='background:#B22222;'></span><br/><b>Heavy Rain<br/>Thunderstorm</b></li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-    </div>
 
-     <script>
+        <script>
 
-        var map = L.map('map').setView([9.05, -1.1], 6);
-        map.options.minZoom = 6;    
-	map.options.maxZoom = 20; // Reduce this for free editions                 
-        const bounds = [
-			[1.082608,-16.84559], // SouthWest Coordinates  2.282608,-17.84559
-			[15.0386,15.04559] // NorthEast Coordinates  17.5386,15.44559
-		       ];
+          var map = L.map('map').setView([9.05, -1.1], 6);
+          map.options.minZoom = 0;    
 
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-                attribution: '<a href="https://web.facebook.com/eastwindconsult">EastwindConsult</a> | \
-                &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> | \
-                <a href="https://leafletjs.com">Leaflet</a>'
-            }).addTo(map);	
-             
+          map.options.maxZoom = 20; // Reduce this for free editions  
+              
+          const bounds = [
+          [1.082608,-16.84559], // SouthWest Coordinates  2.282608,-17.84559
+          [15.0386,15.04559] // NorthEast Coordinates  17.5386,15.44559
+              ];
 
-            map.attributionControl.setPrefix('<a href="https://web.facebook.com/wowienottie.9">eastwindconsultintl@gmail.com</a>'); 
-                                    
-            // files/kml/wrf_rainfall_201908070600.kml                          
-            var kmlLayer = new L.KML("/forecast/precslpwind/2022111100/wrf_precslpwind.kml", {async: true});
-            
-            var mapKmlLayer = map.addLayer(kmlLayer);
+    //	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+    //	L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+    //  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
-	    map.setMaxBounds(bounds, {reset: true});
+        L.tileLayer('https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png', {
 
+                    attribution: '<a href="https://web.facebook.com/eastwindconsult">EastwindConsult</a> | \
+                    &copy; <a href="https://tileserver.memomaps.de"> Memomaps</a> | \
+                    <a href="https://leafletjs.com">Leaflet</a>'
+                }).addTo(map);	
+                
+                map.attributionControl.setPrefix('<a href="https://web.facebook.com/eastwindconsult">eastwindconsultintl@gmail.com</a>'); 
+                                        
+                // files/kml/wrf_rainfall_201908070600.kml                          
+                var kmlLayer = new L.KML("/forecast/precslpwind/2022111100/wrf_precslpwind.kml", {async: true});
+                
+                var mapKmlLayer = map.addLayer(kmlLayer);
 
-     </script>
-    <script src="mykmlanimation2.js"></script>
-</body>            
+          map.setMaxBounds(bounds, {reset: true});
+
+        </script>
+        <script src="mykmlanimation2.js"></script>
+        <script src="record.js"></script>
+    </body>            
 </html>
