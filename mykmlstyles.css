@@ -17,6 +17,19 @@ img.leaflet-image-layer.leaflet-zoom-animated {
     z-index: 900;
 }
 
+path.leaflet-interactive {
+    -webkit-tap-highlight-color: transparent;
+    stroke: rgb(222,59,203);
+    stroke-opacity: 0.60;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: transparent;
+    fill-opacity: 0.2;
+    fill-rule: evenodd;
+    z-index: 800;
+}
+
 .button.container {
     z-index: 900;
     height: 10%;
@@ -90,6 +103,28 @@ img.leaflet-image-layer.leaflet-zoom-animated {
     bottom: 2.5%;
     z-index: 800;
     /* left: 37.5%; */
+}
+
+#capture  {
+    position: absolute;
+    bottom: 3.5%;
+    border-radius: 50px;
+    border-left-color:yellow;
+    border-right-color: blue;
+    border-top-color: red;
+    border-bottom-color: green;
+    border-style:double ;
+    border-width: medium;
+    background: white;
+    z-index: 900;
+    right: 0.5%;
+    width: 8rem;
+    height: 2rem;
+}
+
+
+.video {
+    visibility: hidden;
 }
 
 .legendContainer {
