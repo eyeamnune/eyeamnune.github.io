@@ -45,20 +45,22 @@
               </div>
 
               <div class="logo">
-                      <img src="images/eastwindconsult.png" alt="eastwindconsultlogo" />
+                      <img src="images/eastwindconsult.png" alt="eastwindconsultlogo"/>
               </div>
+
+              <div id="loader"></div> 
 
           <div class='legendContainer'>
             <div class='legendTitle'></div>
               <div class='legendScale'>
                 <ul class='legendLabel'>
-                  <li><span style='background:#F2EEF6;'></span><br/><b>Clear Sky<br/>Partly Cloudy</b></li>
-                  <li><span style='background:#40E0D0;'></span><br/><b>Partly Cloudy<br/>Cloudy</b></li>
-                  <li><span style='background:#00bfff;'></span><br/><b>Light Drizzle<br/>Drizzle</b></li>
-                  <li><span style='background:#68fa07'></span><br/><b>Light Rain<br/>Rain Showers</b></li>
+                  <li><span style='background:#F2EEF6;'></span><br/><b>Clear Sky</b></li>
+                  <li><span style='background:#40E0D0;'></span><br/><b>Partly Cloudy</b></li>
+                  <li><span style='background:#00bfff;'></span><br/><b>Drizzle</b></li>
+                  <li><span style='background:#68fa07'></span><br/><b>Rain Showers</b></li>
                   <li><span style='background:#FFD700;'></span><br/><b>Rain</b></li>
                   <li><span style='background:#FF6347;'></span><br/><b>Heavy Rain</b></li>
-                  <li><span style='background:#B22222;'></span><br/><b>Heavy Rain<br/>Thunderstorm</b></li>
+                  <li><span style='background:#B22222;'></span><br/><b>Thunderstorm</b></li>
                 </ul>
               </div>
             </div>
@@ -66,14 +68,14 @@
 
         <script>
 
-          var map = L.map('map').setView([9.05, -1.1], 6);
-          map.options.minZoom = 5;    
+          var map = L.map('map').setView([8.50, -1.1], 6);
+          map.options.minZoom = 0;    
 
-          map.options.maxZoom = 7; // Reduce this for free editions  
+          map.options.maxZoom = 20; // Reduce this for free editions  
               
           const bounds = [
           [1.082608,-16.84559], // SouthWest Coordinates  2.282608,-17.84559
-          [15.0386,15.04559] // NorthEast Coordinates  17.5386,15.44559
+          [16.0386,15.04559] // NorthEast Coordinates  17.5386,15.44559
               ];
 
     //	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -83,8 +85,11 @@
         L.tileLayer('https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png', {
 
                     attribution: '<a href="https://web.facebook.com/eastwindconsult">EastwindConsult</a> | \
+                    <a href="https://web.facebook.com/eastwindconsult">eastwindconsultintl@gmail.com</a> | \
                     &copy; <a href="https://tileserver.memomaps.de"> Memomaps</a> | \
-                    <a href="https://leafletjs.com">Leaflet</a>'
+                    <a href="https://leafletjs.com">Leaflet</a> '
+                   
+
                 }).addTo(map);	
                 
                 map.attributionControl.setPrefix('<a href="https://web.facebook.com/eastwindconsult">eastwindconsultintl@gmail.com</a>'); 
