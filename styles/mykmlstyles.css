@@ -12,7 +12,7 @@ body {
     border: transparent;
 }
 
-/*
+
 img.leaflet-image-layer.leaflet-zoom-animated {
     background: transparent;
     z-index: 350;
@@ -59,7 +59,7 @@ img.leaflet-image-layer.leaflet-zoom-animated {
     max-width: 100%;
     min-width: 100%;
 }
-*/
+
 
 path.leaflet-interactive {
     -webkit-tap-highlight-color: transparent;
